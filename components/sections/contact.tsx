@@ -1,5 +1,6 @@
 "use client"
 
+import React from "react"
 import { motion } from "framer-motion"
 
 const Contact = () => {
@@ -42,12 +43,12 @@ const Contact = () => {
               GitHub
             </a>
             <a
-              href="/resume.pdf"
+              href="https://www.linkedin.com/in/YOUR-HANDLE/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-500 hover:text-gray-700 transition-colors duration-300 font-light"
             >
-              Resume
+              Message me on LinkedIn
             </a>
           </div>
         </div>

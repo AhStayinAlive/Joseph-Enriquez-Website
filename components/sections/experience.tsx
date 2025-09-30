@@ -1,8 +1,10 @@
 "use client"
 
+import React from "react"
 import { ArrowUpRight } from "lucide-react"
 import ScrollRevealText from "@/components/scroll-reveal-text"
 import SectionHeader from "@/components/section-header"
+import { LINKEDIN_URL } from "@/lib/links"
 
 const experiences = [
   {
@@ -107,7 +109,7 @@ const Experience = ({ onItemClick }: ExperienceProps) => {
                               Freelance
                             </span>
                           )}
-                          <ArrowUpRight className="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none ml-1" />
+                          <ArrowUpRight className="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible:translate-x-1 motion-reduce:transition-none ml-1" />
                         </span>
                       </button>
                     </div>
@@ -132,18 +134,18 @@ const Experience = ({ onItemClick }: ExperienceProps) => {
           <div className="mt-12">
             <a
               className="inline-flex items-center font-medium leading-tight text-slate-200 font-semibold text-slate-200 group transition-all duration-300 hover:scale-105"
-              aria-label="Request Resume"
-              href="https://www.linkedin.com/in/joseph-dean-te-enriquez/"
+              aria-label="Message me on LinkedIn"
+              href={LINKEDIN_URL}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
             >
               <span>
                 <span className="border-b border-transparent pb-px transition group-hover:border-red-400 motion-reduce:transition-none">
-                  Request
+                  Message me on
                 </span>
                 <span className="whitespace-nowrap">
                   <span className="border-b border-transparent pb-px transition group-hover:border-red-400 motion-reduce:transition-none">
-                    Resume
+                    LinkedIn
                   </span>
                   <ArrowUpRight className="ml-1 inline-block h-4 w-4 shrink-0 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 group-focus-visible:-translate-y-1 group-focus-visible:translate-x-1 motion-reduce:transition-none" />
                 </span>

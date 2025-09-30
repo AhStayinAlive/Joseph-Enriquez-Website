@@ -1,8 +1,8 @@
-import type React from "react"
+import React from "react"
 import "@/app/globals.css"
 import { Inter } from "next/font/google"
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({ subsets: ["latin"], display: 'swap' })
 
 export const metadata = {
   title: "Joseph Dean Te Enriquez - Data Engineer | Software Developer",

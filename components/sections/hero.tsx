@@ -1,9 +1,10 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { Download, Mail, ArrowDown } from "lucide-react"
+import React, { useState, useEffect } from "react"
+import { Mail, ArrowDown } from "lucide-react"
 import Image from "next/image"
 import ScrollRevealText from "@/components/scroll-reveal-text"
+import { LINKEDIN_URL } from "@/lib/links"
 
 const Hero = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
@@ -57,21 +58,19 @@ const Hero = () => {
           <ScrollRevealText direction="up" delay={600}>
             <p className="text-lg text-slate-400 max-w-xl leading-relaxed">
               I craft accessible, pixel-perfect data pipelines and software solutions that blend thoughtful engineering
-              with robust performance. Currently building the future of retail tech at{" "}
-              <span className="text-red-400">ING Hubs Philippines</span>.
+              with robust performance. Currently building the future of retail tech at <span className="text-red-400">ING Hubs Philippines</span>.
             </p>
           </ScrollRevealText>
 
           <ScrollRevealText direction="up" delay={800}>
             <div className="flex flex-col sm:flex-row gap-4">
               <a
-                href="/resume.pdf"
+                href={LINKEDIN_URL}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="group inline-flex items-center justify-center space-x-2 bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-lg transition-all duration-300 hover:scale-105"
               >
-                <Download className="w-4 h-4" />
-                <span>Download Resume</span>
+                <span>Message me on LinkedIn</span>
               </a>
               <a
                 href="mailto:joseph.enriquez@example.com"
