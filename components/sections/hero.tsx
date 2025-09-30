@@ -1,7 +1,8 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Download, Mail, ArrowDown } from "lucide-react"
+import { Mail, ArrowDown } from "lucide-react"
+import Link from "next/link"
 import Image from "next/image"
 import ScrollRevealText from "@/components/scroll-reveal-text"
 
@@ -64,15 +65,14 @@ const Hero = () => {
 
           <ScrollRevealText direction="up" delay={800}>
             <div className="flex flex-col sm:flex-row gap-4">
-              <a
-                href="/resume.pdf"
+              <Link
+                href={process.env.NEXT_PUBLIC_LINKEDIN_URL ?? "https://www.linkedin.com/in/joseph-dean-te-enriquez/"}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="group inline-flex items-center justify-center space-x-2 bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-lg transition-all duration-300 hover:scale-105"
               >
-                <Download className="w-4 h-4" />
-                <span>Download Resume</span>
-              </a>
+                <span>Message me on LinkedIn</span>
+              </Link>
               <a
                 href="mailto:joseph.enriquez@example.com"
                 className="group inline-flex items-center justify-center space-x-2 border border-red-500/30 hover:border-red-500 text-red-400 hover:text-red-300 px-6 py-3 rounded-lg transition-all duration-300 hover:scale-105"

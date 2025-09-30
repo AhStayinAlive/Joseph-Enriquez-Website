@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { Github, Linkedin, Mail, FileText } from "lucide-react"
+import Link from "next/link"
 import Image from "next/image"
 
 const Sidebar = () => {
@@ -266,15 +267,15 @@ const Sidebar = () => {
             </a>
           </li>
           <li>
-            <a
+            <Link
               className="block hover:text-red-400 transition-all duration-300 hover:scale-110"
-              href="/resume.pdf"
+              href={process.env.NEXT_PUBLIC_LINKEDIN_URL ?? "https://www.linkedin.com/in/joseph-dean-te-enriquez/"}
               target="_blank"
-              rel="noreferrer"
-              aria-label="Resume (opens in a new tab)"
+              rel="noopener noreferrer"
+              aria-label="Message me on LinkedIn (opens in a new tab)"
             >
               <FileText className="h-6 w-6" />
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

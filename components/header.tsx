@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { Github, Linkedin, Mail, FileText, Menu, X } from "lucide-react"
+import Link from "next/link"
 import Image from "next/image"
 
 const Header = () => {
@@ -108,14 +109,14 @@ const Header = () => {
               >
                 <Mail className="h-4 w-4" />
               </a>
-              <a
-                href="/resume.pdf"
+              <Link
+                href={process.env.NEXT_PUBLIC_LINKEDIN_URL ?? "https://www.linkedin.com/in/joseph-dean-te-enriquez/"}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="text-slate-400 hover:text-red-400 transition-colors duration-300"
               >
                 <FileText className="h-4 w-4" />
-              </a>
+              </Link>
             </div>
 
             <button
@@ -179,14 +180,14 @@ const Header = () => {
             >
               <Mail className="h-5 w-5" />
             </a>
-            <a
-              href="/resume.pdf"
+            <Link
+              href={process.env.NEXT_PUBLIC_LINKEDIN_URL ?? "https://www.linkedin.com/in/joseph-dean-te-enriquez/"}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="text-slate-400 hover:text-red-400 transition-colors duration-300"
             >
               <FileText className="h-5 w-5" />
-            </a>
+            </Link>
           </div>
         </div>
       </div>

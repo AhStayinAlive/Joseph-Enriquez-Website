@@ -7,6 +7,9 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 
+export const dynamic = 'force-static'
+export const revalidate = 86400
+
 export default function StartupWars2025() {
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [selectedImage, setSelectedImage] = useState<string | null>(null)

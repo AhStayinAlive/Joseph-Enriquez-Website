@@ -6,6 +6,9 @@ import MainContent from "@/components/main-content"
 import CustomCursor from "@/components/custom-cursor"
 import ScrollProgress from "@/components/scroll-progress"
 
+export const dynamic = 'force-static'
+export const revalidate = 86400
+
 export default function Home() {
   useEffect(() => {
     const updateMousePosition = (e: MouseEvent) => {

@@ -42,12 +42,12 @@ const Contact = () => {
               GitHub
             </a>
             <a
-              href="/resume.pdf"
+              href={process.env.NEXT_PUBLIC_LINKEDIN_URL ?? "https://www.linkedin.com/in/joseph-dean-te-enriquez/"}
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-500 hover:text-gray-700 transition-colors duration-300 font-light"
             >
-              Resume
+              Message me on LinkedIn
             </a>
           </div>
         </div>

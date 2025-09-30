@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import Image from "next/image"
 import { X, Calendar, ArrowUpRight } from "lucide-react"
 import ScrollRevealText from "@/components/scroll-reveal-text"
 
@@ -406,14 +407,12 @@ const DetailPanel = ({ isOpen, onClose, item, type }: DetailPanelProps) => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
               {(item.company === "ING Hubs Philippines" ? ingPhotos : shopeePhotos).map((photo, index) => (
                 <div key={index} className="group relative aspect-[4/3] bg-slate-800 rounded-lg overflow-hidden">
-                  <img
+                  <Image
                     src={photo.src || "/placeholder.svg"}
                     alt={photo.caption}
-                    className="w-full h-full object-cover transition-all duration-300 group-hover:scale-105 group-hover:brightness-110"
-                    onError={(e) => {
-                      console.error(`Failed to load image: ${photo.src}`)
-                      e.currentTarget.src = "/placeholder.svg?height=300&width=400&text=Image+Not+Found"
-                    }}
+                    fill
+                    sizes="(max-width: 1024px) 50vw, 33vw"
+                    className="object-cover transition-all duration-300 group-hover:scale-105 group-hover:brightness-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
