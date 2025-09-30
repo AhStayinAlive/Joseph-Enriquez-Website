@@ -13,7 +13,7 @@ interface ProjectsProps {
   projects?: ProjectRecord[]
 }
 
-const Projects = ({ onItemClick, projects = defaultProjectsData }: ProjectsProps) => {
+const Projects = ({ onItemClick, projects }: ProjectsProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [modalData, setModalData] = useState<ProjectRecord | null>(null)
 
@@ -21,6 +21,8 @@ const Projects = ({ onItemClick, projects = defaultProjectsData }: ProjectsProps
     setModalData(p)
     setIsModalOpen(true)
   }
+
+  const list = projects && projects.length ? projects : defaultProjectsData
 
   return (
     <section id="projects" className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24">
@@ -32,7 +34,7 @@ const Projects = ({ onItemClick, projects = defaultProjectsData }: ProjectsProps
 
       <div>
         <ul className="group/list space-y-12">
-          {projects.map((project, index) => (
+          {list.map((project, index) => (
             <li key={index}>
               <ScrollRevealText
                 direction={index % 2 === 0 ? "left" : "right"}
