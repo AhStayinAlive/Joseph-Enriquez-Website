@@ -1,24 +1,11 @@
-"use client"
-
-import { useEffect } from "react"
+export const dynamic = 'force-static'
+export const revalidate = 86400
 import Header from "@/components/header"
 import MainContent from "@/components/main-content"
 import CustomCursor from "@/components/custom-cursor"
 import ScrollProgress from "@/components/scroll-progress"
 
 export default function Home() {
-  useEffect(() => {
-    const updateMousePosition = (e: MouseEvent) => {
-      document.documentElement.style.setProperty("--mouse-x", `${e.clientX}px`)
-      document.documentElement.style.setProperty("--mouse-y", `${e.clientY}px`)
-    }
-
-    document.addEventListener("mousemove", updateMousePosition)
-
-    return () => {
-      document.removeEventListener("mousemove", updateMousePosition)
-    }
-  }, [])
 
   return (
     <div className="min-h-screen text-slate-300 relative">

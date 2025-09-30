@@ -12,6 +12,9 @@ const CustomCursor = () => {
         x: e.clientX,
         y: e.clientY,
       })
+      // Also expose coordinates as CSS variables for spotlight background
+      document.documentElement.style.setProperty("--mouse-x", `${e.clientX}px`)
+      document.documentElement.style.setProperty("--mouse-y", `${e.clientY}px`)
     }
 
     const mouseEnterLink = () => setCursorVariant("link")
