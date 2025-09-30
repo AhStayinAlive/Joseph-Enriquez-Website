@@ -1,0 +1,18 @@
+{
+  "competition": "Startup Wars 2025",
+  "ranking": "Top 6 / 175+",
+  "region": "ASEAN",
+  "thesis": {
+    "primary": "Cloud > MSS",
+    "secondary": "BCDR/DRaaS > IAM",
+    "rationale": "Scale/liquidity for Cloud; size-of-prize and winnability for BCDR/DRaaS"
+  },
+  "methodology": {
+    "approaches": ["SAW", "TOPSIS", "PROMETHEE II", "VIKOR"],
+    "criteria": ["Market", "Innovation", "Exit", "Competition", "Regulatory", "CapInt/Scalability"],
+    "guardrails": ["Policy compliance", "HHI/CR4 analysis"],
+    "stress_tests": "±10-15% weight variations",
+    "data_sources": "PH-first, APAC supplementary, 2023-2025"
+  },
+  "note": "Normalized CSVs and reproducible R/SQL pipelines available for download"
+}
