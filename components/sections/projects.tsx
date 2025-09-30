@@ -6,14 +6,14 @@ import ScrollRevealText from "@/components/scroll-reveal-text"
 import SectionHeader from "@/components/section-header"
 import Image from "next/image"
 import ProjectModal from "@/components/ProjectModal"
-import type { ProjectRecord } from "@/data/projects"
+import defaultProjectsData, { type ProjectRecord } from "@/data/projects"
 
 interface ProjectsProps {
   onItemClick: (item: any, type: "experience" | "project") => void
   projects?: ProjectRecord[]
 }
 
-const Projects = ({ onItemClick, projects = [] }: ProjectsProps) => {
+const Projects = ({ onItemClick, projects = defaultProjectsData }: ProjectsProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [modalData, setModalData] = useState<ProjectRecord | null>(null)
 
