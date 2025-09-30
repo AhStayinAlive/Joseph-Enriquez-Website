@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { X, Calendar, ArrowUpRight } from "lucide-react"
+import Image from "next/image"
 import ScrollRevealText from "@/components/scroll-reveal-text"
 
 interface DetailPanelProps {
@@ -406,14 +407,12 @@ const DetailPanel = ({ isOpen, onClose, item, type }: DetailPanelProps) => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
               {(item.company === "ING Hubs Philippines" ? ingPhotos : shopeePhotos).map((photo, index) => (
                 <div key={index} className="group relative aspect-[4/3] bg-slate-800 rounded-lg overflow-hidden">
-                  <img
+                  <Image
                     src={photo.src || "/placeholder.svg"}
                     alt={photo.caption}
-                    className="w-full h-full object-cover transition-all duration-300 group-hover:scale-105 group-hover:brightness-110"
-                    onError={(e) => {
-                      console.error(`Failed to load image: ${photo.src}`)
-                      e.currentTarget.src = "/placeholder.svg?height=300&width=400&text=Image+Not+Found"
-                    }}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover transition-all duration-300 group-hover:scale-105 group-hover:brightness-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -446,16 +445,16 @@ const DetailPanel = ({ isOpen, onClose, item, type }: DetailPanelProps) => {
             </h1>
             <p className="text-slate-400 text-lg">Personal Project</p>
           </div>
-          {item.links?.github && (
+          {item.status !== "ongoing" && (item.sourceUrl || item.links?.github) && (
             <a
-              href={item.links.github}
+              href={item.sourceUrl || item.links.github}
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-red-400 focus-visible:text-red-400 group/link text-base transition-colors duration-300"
             >
               <span>
                 View Source Code
-                <ArrowUpRight className="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none ml-1" />
+                <ArrowUpRight className="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible:translate-x-1 motion-reduce:transition-none ml-1" />
               </span>
             </a>
           )}
@@ -706,17 +705,23 @@ const DetailPanel = ({ isOpen, onClose, item, type }: DetailPanelProps) => {
         <div className="border-t border-slate-700/30 pt-8">
           <h3 className="text-xl font-medium text-slate-200 mb-4">Explore Project</h3>
           <div className="flex gap-4">
-            <a
-              href={item.links?.github}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-red-400 focus-visible:text-red-400 group/link text-base transition-colors duration-300"
-            >
-              <span>
-                View Source Code
-                <ArrowUpRight className="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none ml-1" />
+            {item.status === "ongoing" ? (
+              <span className="inline-flex items-center rounded-full bg-slate-700/40 px-3 py-1 text-xs text-slate-300 border border-slate-600/40 cursor-not-allowed">
+                Ongoing — code private
               </span>
-            </a>
+            ) : (item.sourceUrl || item.links?.github) ? (
+              <a
+                href={item.sourceUrl || item.links.github}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-red-400 focus-visible:text-red-400 group/link text-base transition-colors duration-300"
+              >
+                <span>
+                  View Source Code
+                  <ArrowUpRight className="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible:translate-x-1 motion-reduce:transition-none ml-1" />
+                </span>
+              </a>
+            ) : null}
           </div>
         </div>
       </ScrollRevealText>

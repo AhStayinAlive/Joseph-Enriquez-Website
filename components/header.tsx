@@ -1,8 +1,9 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import { Github, Linkedin, Mail, FileText, Menu, X } from "lucide-react"
 import Image from "next/image"
+import { LINKEDIN_URL } from "@/lib/links"
 
 const Header = () => {
   const [activeSection, setActiveSection] = useState("about")
@@ -95,7 +96,7 @@ const Header = () => {
                 <Github className="h-4 w-4" />
               </a>
               <a
-                href="https://www.linkedin.com/in/joseph-dean-te-enriquez/"
+                href={LINKEDIN_URL}
                 target="_blank"
                 rel="noreferrer"
                 className="text-slate-400 hover:text-red-400 transition-colors duration-300"
@@ -108,12 +109,7 @@ const Header = () => {
               >
                 <Mail className="h-4 w-4" />
               </a>
-              <a
-                href="/resume.pdf"
-                target="_blank"
-                rel="noreferrer"
-                className="text-slate-400 hover:text-red-400 transition-colors duration-300"
-              >
+              <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-red-400 transition-colors duration-300" aria-label="Message me on LinkedIn">
                 <FileText className="h-4 w-4" />
               </a>
             </div>
@@ -166,7 +162,7 @@ const Header = () => {
               <Github className="h-5 w-5" />
             </a>
             <a
-              href="https://www.linkedin.com/in/joseph-dean-te-enriquez/"
+              href={LINKEDIN_URL}
               target="_blank"
               rel="noreferrer"
               className="text-slate-400 hover:text-red-400 transition-colors duration-300"
@@ -179,12 +175,7 @@ const Header = () => {
             >
               <Mail className="h-5 w-5" />
             </a>
-            <a
-              href="/resume.pdf"
-              target="_blank"
-              rel="noreferrer"
-              className="text-slate-400 hover:text-red-400 transition-colors duration-300"
-            >
+            <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-red-400 transition-colors duration-300" aria-label="Message me on LinkedIn">
               <FileText className="h-5 w-5" />
             </a>
           </div>

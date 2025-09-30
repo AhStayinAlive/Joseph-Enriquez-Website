@@ -1,14 +1,17 @@
 "use client"
 
 import { useState } from "react"
+import dynamic from "next/dynamic"
 import Hero from "@/components/sections/hero"
 import About from "@/components/sections/about"
 import Experience from "@/components/sections/experience"
 import Projects from "@/components/sections/projects"
 import Hobbies from "@/components/sections/hobbies"
-import DetailPanel from "@/components/detail-panel"
+import type { ProjectRecord } from "@/data/projects"
 
-const MainContent = () => {
+const DetailPanel = dynamic(() => import("@/components/detail-panel"), { ssr: false })
+
+const MainContent = ({ projectsData = [] as ProjectRecord[] }: { projectsData?: ProjectRecord[] }) => {
   const [selectedItem, setSelectedItem] = useState<any>(null)
   const [selectedType, setSelectedType] = useState<"experience" | "project" | null>(null)
   const [isPanelOpen, setIsPanelOpen] = useState(false)
@@ -34,7 +37,7 @@ const MainContent = () => {
         <div className="max-w-6xl mx-auto px-6 space-y-32">
           <About />
           <Experience onItemClick={handleItemClick} />
-          <Projects onItemClick={handleItemClick} />
+          <Projects onItemClick={handleItemClick} projects={projectsData} />
           <Hobbies />
         </div>
       </main>

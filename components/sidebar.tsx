@@ -1,8 +1,9 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import { Github, Linkedin, Mail, FileText } from "lucide-react"
 import Image from "next/image"
+import { LINKEDIN_URL } from "@/lib/links"
 
 const Sidebar = () => {
   const [activeSection, setActiveSection] = useState("about")
@@ -112,9 +113,7 @@ const Sidebar = () => {
               style={{
                 top: `${20 + Math.sin((i * Math.PI) / 4) * 30}%`,
                 left: `${50 + Math.cos((i * Math.PI) / 4) * 35}%`,
-                transform: `translate(${mousePosition.x * 0.5}px, ${mousePosition.y * 0.5}px) scale(${
-                  isHovered ? 1.5 : 0.5
-                })`,
+                transform: `translate(${mousePosition.x * 0.5}px, ${mousePosition.y * 0.5}px) scale(${isHovered ? 1.5 : 0.5})`,
                 animationDelay: `${i * 0.1}s`,
               }}
             ></div>
@@ -124,9 +123,7 @@ const Sidebar = () => {
           <div
             className="relative w-full h-full rounded-full overflow-hidden border-4 border-slate-700/50 transition-all duration-500 shadow-2xl"
             style={{
-              transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px) rotateX(${
-                mousePosition.y * 0.1
-              }deg) rotateY(${mousePosition.x * 0.1}deg)`,
+              transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px) rotateX(${mousePosition.y * 0.1}deg) rotateY(${mousePosition.x * 0.1}deg)`,
               boxShadow: isHovered
                 ? "0 25px 50px -12px rgba(239, 68, 68, 0.4), 0 0 0 1px rgba(239, 68, 68, 0.2)"
                 : "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
@@ -157,9 +154,7 @@ const Sidebar = () => {
               src="/images/joseph-profile.png"
               alt="Joseph Dean Te Enriquez"
               fill
-              className={`object-cover transition-all duration-500 ${
-                isHovered ? "scale-110 brightness-110" : "scale-100 brightness-100"
-              }`}
+              className={`object-cover transition-all duration-500 ${isHovered ? "scale-110 brightness-110" : "scale-100 brightness-100"}`}
               style={{
                 filter: isHovered ? "contrast(1.1) saturate(1.2)" : "contrast(1) saturate(1)",
               }}
@@ -188,9 +183,7 @@ const Sidebar = () => {
           <div
             className={`absolute inset-0 rounded-full transition-all duration-1000 ${isHovered ? "animate-pulse" : ""}`}
             style={{
-              background: isHovered
-                ? "radial-gradient(circle, rgba(239,68,68,0.1) 0%, transparent 70%)"
-                : "transparent",
+              background: isHovered ? "radial-gradient(circle, rgba(239,68,68,0.1) 0%, transparent 70%)" : "transparent",
             }}
           ></div>
         </div>
@@ -208,22 +201,9 @@ const Sidebar = () => {
           <ul className="mt-8 w-max">
             {navItems.map((item) => (
               <li key={item.id}>
-                <button
-                  onClick={() => scrollToSection(item.id)}
-                  className={`group flex items-center py-3 ${activeSection === item.id ? "active" : ""}`}
-                >
-                  <span
-                    className={`nav-indicator mr-4 h-px transition-all ${
-                      activeSection === item.id
-                        ? "w-16 bg-slate-200"
-                        : "w-8 bg-slate-600 group-hover:w-16 group-hover:bg-slate-300"
-                    }`}
-                  ></span>
-                  <span
-                    className={`nav-text text-xs font-bold uppercase tracking-widest transition-colors ${
-                      activeSection === item.id ? "text-slate-200" : "text-slate-500 group-hover:text-slate-200"
-                    }`}
-                  >
+                <button onClick={() => scrollToSection(item.id)} className={`group flex items-center py-3 ${activeSection === item.id ? "active" : ""}`}>
+                  <span className={`nav-indicator mr-4 h-px transition-all ${activeSection === item.id ? "w-16 bg-slate-200" : "w-8 bg-slate-600 group-hover:w-16 group-hover:bg-slate-300"}`}></span>
+                  <span className={`nav-text text-xs font-bold uppercase tracking-widest transition-colors ${activeSection === item.id ? "text-slate-200" : "text-slate-500 group-hover:text-slate-200"}`}>
                     {item.label}
                   </span>
                 </button>
@@ -235,44 +215,22 @@ const Sidebar = () => {
       <div className="mt-6">
         <ul className="flex flex-wrap items-center justify-center lg:justify-start gap-4" aria-label="Social media">
           <li>
-            <a
-              className="block hover:text-red-400 transition-all duration-300 hover:scale-110"
-              href="https://github.com/AhStayinAlive"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="GitHub (opens in a new tab)"
-            >
+            <a className="block hover:text-red-400 transition-all duration-300 hover:scale-110" href="https://github.com/AhStayinAlive" target="_blank" rel="noreferrer" aria-label="GitHub (opens in a new tab)">
               <Github className="h-6 w-6" />
             </a>
           </li>
           <li>
-            <a
-              className="block hover:text-red-400 transition-all duration-300 hover:scale-110"
-              href="https://www.linkedin.com/in/joseph-dean-te-enriquez/"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="LinkedIn (opens in a new tab)"
-            >
+            <a className="block hover:text-red-400 transition-all duration-300 hover:scale-110" href={LINKEDIN_URL} target="_blank" rel="noreferrer" aria-label="LinkedIn (opens in a new tab)">
               <Linkedin className="h-6 w-6" />
             </a>
           </li>
           <li>
-            <a
-              className="block hover:text-red-400 transition-all duration-300 hover:scale-110"
-              href="mailto:joseph.enriquez@example.com"
-              aria-label="Email"
-            >
+            <a className="block hover:text-red-400 transition-all duration-300 hover:scale-110" href="mailto:joseph.enriquez@example.com" aria-label="Email">
               <Mail className="h-6 w-6" />
             </a>
           </li>
           <li>
-            <a
-              className="block hover:text-red-400 transition-all duration-300 hover:scale-110"
-              href="/resume.pdf"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Resume (opens in a new tab)"
-            >
+            <a className="block hover:text-red-400 transition-all duration-300 hover:scale-110" href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" aria-label="Message me on LinkedIn">
               <FileText className="h-6 w-6" />
             </a>
           </li>
