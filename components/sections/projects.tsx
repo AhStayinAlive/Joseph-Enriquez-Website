@@ -64,7 +64,7 @@ const Projects = ({ onItemClick, onOpenProjectModal }: ProjectsProps) => {
                     project.isCaseStudy ? "" : ""
                   }`}
                   onClick={() => {
-                    if (project.isCaseStudy) {
+                    if (project.isCaseStudy || project.slug === 'choreo-xplore') {
                       onOpenProjectModal?.(project)
                     } else {
                       onItemClick(project, "project")
@@ -93,7 +93,13 @@ const Projects = ({ onItemClick, onOpenProjectModal }: ProjectsProps) => {
                       </Link>
                     ) : (
                       <button
-                        onClick={() => onItemClick(project, "project")}
+                        onClick={() => {
+                          if (project.slug === 'choreo-xplore') {
+                            onOpenProjectModal?.(project)
+                          } else {
+                            onItemClick(project, "project")
+                          }
+                        }}
                         className="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-red-400 focus-visible:text-red-400 group/link text-base transition-colors duration-300 text-left"
                       >
                         <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
@@ -118,11 +124,6 @@ const Projects = ({ onItemClick, onOpenProjectModal }: ProjectsProps) => {
                   {project.period && (
                     <div className="mt-2 text-xs text-slate-500 uppercase tracking-wide">{project.period}</div>
                   )}
-                  {project.slug === "choreo-xplore" && (
-                    <div className="mt-3">
-                      <ButtonLink href="#" variant="primary" size="sm" onClick={undefined as never as any} />
-                    </div>
-                  )}
                 </div>
                 <Image
                   alt={project.title}
@@ -134,7 +135,7 @@ const Projects = ({ onItemClick, onOpenProjectModal }: ProjectsProps) => {
                   className="rounded border-2 border-slate-200/10 transition-all duration-300 group-hover:border-slate-200/30 group-hover:scale-105 sm:order-1 sm:col-span-2 sm:translate-y-1 cursor-pointer object-cover"
                   src={project.coverSrc || "/placeholder.svg"}
                   onClick={() => {
-                    if (project.isCaseStudy) {
+                    if (project.isCaseStudy || project.slug === 'choreo-xplore') {
                       onOpenProjectModal?.(project)
                     } else {
                       onItemClick(project, "project")
